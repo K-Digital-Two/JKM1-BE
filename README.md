@@ -1,4 +1,4 @@
-# ReadMe: SpringBoot-rest (JKM1-BE) 🍃
+# ReadMe: SpringBoot-rest service (JKM1-BE) 🍃
 빅데이터분석 웹서비스 개발 프로젝트
 
 ## Estimated Time of Arrival Project by 중.꺾.마 🔥
@@ -50,3 +50,4 @@
 + about spring-boot properties : http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 + about spring-boot tomcat connection : http://blog.woniper.net/231
 + about spring-boot devTools : https://docs.spring.io/spring-boot/docs/1.5.16.RELEASE/reference/html/using-boot-devtools.html
++ about spring-boot rest api : https://spring.io/guides/gs/rest-service/
