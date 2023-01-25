@@ -1,6 +1,7 @@
 package com.eta.jkm.domain;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class InfoVO {
 
@@ -12,9 +13,9 @@ public class InfoVO {
 	private int takeTime;		// 소요 예정 시간
 	private double speed;		// 선박속도
 	private String departure;	// 출발지
-	private Date departTime;	// 출발시각
+	private String departTime;	// 출발시각
 	private String arrivalName;	// 도착지
-	private Date arrivalTime;	// 도착 예정 시각
+	private String arrivalTime;	// 도착 예정 시각
 	private double accuracy;	// 정확도
 	
 	public InfoVO() {
@@ -22,7 +23,8 @@ public class InfoVO {
 	}
 
 	public InfoVO(int shipId, String shipName, String shipUse, double shipLat, double shipLon, int takeTime,
-			double speed, String departure, Date departTime, String arrivalName, Date arrivalTime, double accuracy) {
+			double speed, String departure, String departTime, String arrivalName, String arrivalTime,
+			double accuracy) {
 		super();
 		this.shipId = shipId;
 		this.shipName = shipName;
@@ -110,11 +112,11 @@ public class InfoVO {
 		this.departure = departure;
 	}
 
-	public Date getDepartTime() {
+	public String getDepartTime() {
 		return departTime;
 	}
 
-	public void setDepartTime(Date departTime) {
+	public void setDepartTime(String departTime) {
 		this.departTime = departTime;
 	}
 
@@ -126,11 +128,11 @@ public class InfoVO {
 		this.arrivalName = arrivalName;
 	}
 
-	public Date getArrivalTime() {
+	public String getArrivalTime() {
 		return arrivalTime;
 	}
 
-	public void setArrivalTime(Date arrivalTime) {
+	public void setArrivalTime(String arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
