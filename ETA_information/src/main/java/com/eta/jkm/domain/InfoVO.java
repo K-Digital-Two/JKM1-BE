@@ -1,8 +1,5 @@
 package com.eta.jkm.domain;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public class InfoVO {
 
 	private int shipId;			// mmsi
