@@ -23,7 +23,7 @@ public class ShiplogDao {
 		String sqlString = String.format(
 				"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, max(insertTime)\r\n"
 						+ "from ship, schedules s, shiplog sl, arrivalPort a \r\n"
-						+ "where ship.shipId = s.ship_shipId and s.ship_shipId = sl.ship_shipId and s.arrivalPort_arrivalName = a.arrivalName\r\n"
+						+ "where ship.shipId = s.ship_shipId and s.ship_shipId = sl.schedules_ship_shipId and s.arrivalPort_arrivalName = a.arrivalName\r\n"
 						+ "group by shipId;");
 		List<ShiplogVO> list = jdbcTemplate.query(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
 		return list;
@@ -33,16 +33,17 @@ public class ShiplogDao {
 		String sqlString = String.format(
 				"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, max(insertTime)\r\n"
 						+ "from ship, schedules s, shiplog sl, arrivalPort a \r\n"
-						+ "where ship.shipId = s.ship_shipId and shipId = sl.ship_shipId and s.arrivalPort_arrivalName = a.arrivalName and ship.shipId=%d \r\n"
+						+ "where ship.shipId = s.ship_shipId and shipId = sl.schedules_ship_shipId and s.arrivalPort_arrivalName = a.arrivalName and ship.shipId=%d \r\n"
 						+ "group by shipId;",
 				shipId);
 		ShiplogVO info = jdbcTemplate.queryForObject(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
 		return info;
 	}
 
-	public List<ShiplogVO> getLocations() {
+	public List<ShiplogVO> getLocations(Integer shipId) {
 		String sqlString = String.format(
-				"select shipId, shipLat, shipLon from ship, shiplog sl where ship.shipId = sl.schedules_ship_shipId");
+				"select shipId, shipLat, shipLon from ship, shiplog sl where ship.shipId = sl.schedules_ship_shipId and ship.shipId=%d",
+				shipId);
 		List<ShiplogVO> list = jdbcTemplate.query(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
 		return list;
 	}

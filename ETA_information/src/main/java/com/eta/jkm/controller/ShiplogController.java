@@ -40,9 +40,9 @@ public class ShiplogController {
 		return shiplogService.getLog(shipId);
 	}
 	
-	@GetMapping("/locations")
-	public List<ShiplogVO> getLocations() {
-		log.info("ShiplogController - getLocations(%d)가 호출됨");
-		return shiplogService.getLocations();
+	@GetMapping("/locations/{shipId}")
+	public List<ShiplogVO> getLocations(@PathVariable Integer shipId) {
+		log.info(String.format("ShiplogController - getLocations(%d)가 호출됨", shipId));
+		return shiplogService.getLocations(shipId);
 	}
 }

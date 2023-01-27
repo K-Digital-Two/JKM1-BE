@@ -31,7 +31,7 @@ public class ShiplogService {
 		return dao.getLog(shipId);
 	}
 	
-	public List<ShiplogVO> getLocations() {
-		return dao.getLocations();
+	public List<ShiplogVO> getLocations(Integer shipId) {
+		return dao.getLocations(shipId);
 	}
 }
