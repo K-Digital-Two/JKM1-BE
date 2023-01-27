@@ -22,12 +22,12 @@ public class ShiplogService {
 		this.dao = dao;
 	}
 	
-	public List<ShiplogVO> getInfos() {
+	public List<ShiplogVO> getLogs() {
 		return dao.getLogs();
 	}
 	
 
-	public ShiplogVO getInfo(Integer shipId) {
+	public ShiplogVO getLog(Integer shipId) {
 		return dao.getLog(shipId);
 	}
 	

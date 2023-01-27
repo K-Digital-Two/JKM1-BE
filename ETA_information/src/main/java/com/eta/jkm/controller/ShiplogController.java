@@ -31,13 +31,13 @@ public class ShiplogController {
 	@GetMapping("/log")
 	public List<ShiplogVO> getDetails() {
 		log.info("ShiplogController - getLogs()가 호출됨");
-		return shiplogService.getInfos();
+		return shiplogService.getLogs();
 	}
 	
 	@GetMapping("/log/{shipId}")
 	public ShiplogVO getDetail(@PathVariable Integer shipId) {
 		log.info(String.format("ShiplogController - getLog(%d)가 호출됨", shipId));
-		return shiplogService.getInfo(shipId);
+		return shiplogService.getLog(shipId);
 	}
 	
 	@GetMapping("/locations")
