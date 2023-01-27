@@ -5,29 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.eta.jkm.dao.InfoDao;
-import com.eta.jkm.domain.InfoVO;
+import com.eta.jkm.dao.ShiplogDao;
+import com.eta.jkm.domain.ShiplogVO;
 
 // 서비스 제공
 @Service
-public class InfoService {
+public class ShiplogService {
 
 	// dao 객체 생성 - dao에서 구현된 메소드로 서비스 제공
-	private InfoDao infoDao;
+	private ShiplogDao dao;
 
 	// 생성자를 통한 Autowired
 	@Autowired
-	public InfoService(InfoDao infoDao) {
+	public ShiplogService(ShiplogDao dao) {
 		super();
-		this.infoDao = infoDao;
+		this.dao = dao;
 	}
 	
-	public List<InfoVO> getInfos() {
-		return infoDao.getInfos();
+	public List<ShiplogVO> getInfos() {
+		return dao.getLogs();
 	}
 	
 
-	public InfoVO getInfo(Integer shipId) {
-		return infoDao.getInfo(shipId);
+	public ShiplogVO getInfo(Integer shipId) {
+		return dao.getLog(shipId);
+	}
+	
+	public List<ShiplogVO> getLocations() {
+		return dao.getLocations();
 	}
 }

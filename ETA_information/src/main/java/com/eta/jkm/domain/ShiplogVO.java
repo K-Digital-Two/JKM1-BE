@@ -1,6 +1,6 @@
 package com.eta.jkm.domain;
 
-public class InfoVO {
+public class ShiplogVO {
 
 	private int shipId;			// mmsi
 	private String shipName;	// 선박명
@@ -15,11 +15,17 @@ public class InfoVO {
 	private String arrivalTime;	// 도착 예정 시각
 	private double accuracy;	// 정확도
 	
-	public InfoVO() {
+	public ShiplogVO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public InfoVO(int shipId, String shipName, String shipUse, double shipLat, double shipLon, int takeTime,
+	public ShiplogVO(int shipId, double shipLat, double shipLon) {
+		this.shipId = shipId;
+		this.shipLat = shipLat;
+		this.shipLon = shipLon;
+	}
+	
+	public ShiplogVO(int shipId, String shipName, String shipUse, double shipLat, double shipLon, int takeTime,
 			double speed, String departure, String departTime, String arrivalName, String arrivalTime,
 			double accuracy) {
 		super();
