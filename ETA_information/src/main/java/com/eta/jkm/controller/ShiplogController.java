@@ -29,13 +29,13 @@ public class ShiplogController {
 
 	// db에 저장된 정보를 보여주는 기능이므로 GetMapping만 사용
 	@GetMapping("/log")
-	public List<ShiplogVO> getDetails() {
+	public List<ShiplogVO> getLogs() {
 		log.info("ShiplogController - getLogs()가 호출됨");
 		return shiplogService.getLogs();
 	}
 	
 	@GetMapping("/log/{shipId}")
-	public ShiplogVO getDetail(@PathVariable Integer shipId) {
+	public ShiplogVO getLog(@PathVariable Integer shipId) {
 		log.info(String.format("ShiplogController - getLog(%d)가 호출됨", shipId));
 		return shiplogService.getLog(shipId);
 	}
