@@ -19,10 +19,11 @@ public class ShiplogDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+	// 지도 위 마커 표시를 위한 메소드
 	public List<ShiplogVO> getLogs(Integer timeGroup) {
 		String sqlString = String.format(
 			// 필요한 정보 가져오기
-			"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime\r\n"
+			"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, totalTakeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime\r\n"
 			// 가져올 테이블
 			+ "from ship, schedules s, shiplog sl, arrivalPort a\r\n"
 			// 조건 설정
@@ -39,10 +40,11 @@ public class ShiplogDao {
 		return list;
 	}
 
+	// timeGroup에 따른 특정 선박 정보 표시를 위한 메소드
 	public ShiplogVO getLog(Integer timeGroup, Integer shipId) {
 		String sqlString = String.format(
 			// 필요한 정보 가져오기
-			"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime\r\n"
+			"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, totalTakeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime\r\n"
 			// 가져올 테이블
 			+ "from ship, schedules s, shiplog sl, arrivalPort a\r\n"
 			// 조건 설정
@@ -58,7 +60,8 @@ public class ShiplogDao {
 		ShiplogVO info = jdbcTemplate.queryForObject(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
 		return info;
 	}
-
+	
+	// 운항 경로 표시를 위한 메소드
 	public List<ShiplogVO> getLocations(Integer timeGroup, Integer shipId) {
 		String sqlString = String.format(
 			// 필요한 정보 가져오기

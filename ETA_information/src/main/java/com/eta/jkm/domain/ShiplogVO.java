@@ -5,9 +5,11 @@ public class ShiplogVO {
 	private int shipId;			// mmsi
 	private String shipName;	// 선박명
 	private String shipUse;		// 선박용도
+	private String insertTime;	// 데이터 입력 시각
 	private double shipLat;		// 선박 현재 위도
 	private double shipLon;		// 선박 현재 경도
 	private int takeTime;		// 소요 예정 시간
+	private int totalTakeTime;	// 총 소요 예정 시간
 	private double speed;		// 선박속도
 	private String departure;	// 출발지
 	private String departTime;	// 출발시각
@@ -19,22 +21,18 @@ public class ShiplogVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ShiplogVO(int shipId, double shipLat, double shipLon) {
-		this.shipId = shipId;
-		this.shipLat = shipLat;
-		this.shipLon = shipLon;
-	}
-	
-	public ShiplogVO(int shipId, String shipName, String shipUse, double shipLat, double shipLon, int takeTime,
-			double speed, String departure, String departTime, String arrivalName, String arrivalTime,
-			double accuracy) {
+	public ShiplogVO(int shipId, String shipName, String shipUse, String insertTime, double shipLat, double shipLon,
+			int takeTime, int totalTakeTime, double speed, String departure, String departTime, String arrivalName,
+			String arrivalTime, double accuracy) {
 		super();
 		this.shipId = shipId;
 		this.shipName = shipName;
 		this.shipUse = shipUse;
+		this.insertTime = insertTime;
 		this.shipLat = shipLat;
 		this.shipLon = shipLon;
 		this.takeTime = takeTime;
+		this.totalTakeTime = totalTakeTime;
 		this.speed = speed;
 		this.departure = departure;
 		this.departTime = departTime;
@@ -45,10 +43,11 @@ public class ShiplogVO {
 
 	@Override
 	public String toString() {
-		return "InfoVO [shipId=" + shipId + ", shipName=" + shipName + ", shipUse=" + shipUse + ", shipLat=" + shipLat
-				+ ", shipLon=" + shipLon + ", takeTime=" + takeTime + ", speed=" + speed + ", departure=" + departure
-				+ ", departTime=" + departTime + ", arrivalName=" + arrivalName + ", arrivalTime=" + arrivalTime
-				+ ", accuracy=" + accuracy + "]";
+		return "ShiplogVO [shipId=" + shipId + ", shipName=" + shipName + ", shipUse=" + shipUse + ", insertTime="
+				+ insertTime + ", shipLat=" + shipLat + ", shipLon=" + shipLon + ", takeTime=" + takeTime
+				+ ", totalTakeTime=" + totalTakeTime + ", speed=" + speed + ", departure=" + departure + ", departTime="
+				+ departTime + ", arrivalName=" + arrivalName + ", arrivalTime=" + arrivalTime + ", accuracy="
+				+ accuracy + "]";
 	}
 
 	public int getShipId() {
@@ -75,6 +74,14 @@ public class ShiplogVO {
 		this.shipUse = shipUse;
 	}
 
+	public String getInsertTime() {
+		return insertTime;
+	}
+
+	public void setInsertTime(String insertTime) {
+		this.insertTime = insertTime;
+	}
+
 	public double getShipLat() {
 		return shipLat;
 	}
@@ -97,6 +104,14 @@ public class ShiplogVO {
 
 	public void setTakeTime(int takeTime) {
 		this.takeTime = takeTime;
+	}
+
+	public int getTotalTakeTime() {
+		return totalTakeTime;
+	}
+
+	public void setTotalTakeTime(int totalTakeTime) {
+		this.totalTakeTime = totalTakeTime;
 	}
 
 	public double getSpeed() {
