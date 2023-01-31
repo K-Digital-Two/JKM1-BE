@@ -19,44 +19,42 @@ public class ShiplogDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public List<ShiplogVO> getLogs() {
+	public List<ShiplogVO> getLogs(Integer timeGroup) {
 		String sqlString = String.format(
-				"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, max(insertTime)\r\n"
-				+ "	from ship, schedules s, shiplog sl, arrivalPort a\r\n"
-				+ "	where TIMEDIFF('2023-01-19 16:30:00', insertTime) > 0\r\n"
-				+ "	and shipId = s.ship_shipId \r\n"
-				+ " and shipId = sl.schedules_ship_shipId \r\n"
-				+ " and s.arrivalPort_arrivalName = a.arrivalName \r\n"
-				+ " group by shipId;");
+				"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime\r\n"
+				+ "from ship, schedules s, shiplog sl, arrivalPort a\r\n"
+				+ "where timeGroup = %d\r\n"
+				+ "and shipId = s.ship_shipId\r\n"
+				+ "and shipId = sl.schedules_ship_shipId\r\n"
+				+ "and s.arrivalPort_arrivalName = a.arrivalName\r\n"
+				+ "group by shipId;",
+				timeGroup);
 		List<ShiplogVO> list = jdbcTemplate.query(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
 		return list;
 	}
 
-	public ShiplogVO getLog(Integer shipId) {
+	public ShiplogVO getLog(Integer timeGroup, Integer shipId) {
 		String sqlString = String.format(
 				"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime\r\n"
 				+ "	from ship, schedules s, shiplog sl, arrivalPort a\r\n"
-				+ "	where insertTime = (\r\n"
-				+ "		select max(insertTime) from shiplog\r\n"
-				+ "     where TIMEDIFF('2023-01-19 16:30:00', insertTime) > 0\r\n"
-				+ "    )\r\n"
+				+ "	where timeGroup = %d \r\n"
 				+ "	and shipId = s.ship_shipId \r\n"
 				+ " and shipId = sl.schedules_ship_shipId \r\n"
 				+ " and s.arrivalPort_arrivalName = a.arrivalName \r\n"
 				+ " and shipId = %d;",
-				shipId);
+				timeGroup, shipId);
 		ShiplogVO info = jdbcTemplate.queryForObject(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
 		return info;
 	}
 
-	public List<ShiplogVO> getLocations(Integer shipId) {
+	public List<ShiplogVO> getLocations(Integer timeGroup, Integer shipId) {
 		String sqlString = String.format(
-				"select shipId, shipLat, shipLon, shipName \r\n"
-				+ "from ship, shiplog sl \r\n"
-				+ "where ship.shipId = sl.schedules_ship_shipId \r\n"
-				+ "and TIMEDIFF('2023-01-19 16:30:00', insertTime) > 0\r\n"
-				+ "and shipId = %d;",
-				shipId);
+				"select shipId, shipLat, shipLon, insertTime \r\n"
+				+ " from ship, shiplog sl \r\n"
+				+ " where shipId = sl.schedules_ship_shipId \r\n"
+				+ " and timeGroup <= %d \r\n"
+				+ " and shipId = %d;",
+				timeGroup, shipId);
 		List<ShiplogVO> list = jdbcTemplate.query(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
 		return list;
 	}

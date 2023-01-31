@@ -22,16 +22,16 @@ public class ShiplogService {
 		this.dao = dao;
 	}
 	
-	public List<ShiplogVO> getLogs() {
-		return dao.getLogs();
+	public List<ShiplogVO> getLogs(Integer timeGroup) {
+		return dao.getLogs(timeGroup);
 	}
 	
 
-	public ShiplogVO getLog(Integer shipId) {
-		return dao.getLog(shipId);
+	public ShiplogVO getLog(Integer timeGroup, Integer shipId) {
+		return dao.getLog(timeGroup, shipId);
 	}
 	
-	public List<ShiplogVO> getLocations(Integer shipId) {
-		return dao.getLocations(shipId);
+	public List<ShiplogVO> getLocations(Integer timeGroup, Integer shipId) {
+		return dao.getLocations(timeGroup, shipId);
 	}
 }
