@@ -16,6 +16,7 @@ public class ShiplogVO {
 	private String arrivalName;	// 도착지
 	private String arrivalTime;	// 도착 예정 시각
 	private double accuracy;	// 정확도
+	private int status;			// 운항상태
 	
 	public ShiplogVO() {
 		// TODO Auto-generated constructor stub
@@ -23,7 +24,7 @@ public class ShiplogVO {
 
 	public ShiplogVO(int shipId, String shipName, String shipUse, String insertTime, double shipLat, double shipLon,
 			int takeTime, int totalTakeTime, double speed, String departure, String departTime, String arrivalName,
-			String arrivalTime, double accuracy) {
+			String arrivalTime, double accuracy, int status) {
 		super();
 		this.shipId = shipId;
 		this.shipName = shipName;
@@ -39,6 +40,7 @@ public class ShiplogVO {
 		this.arrivalName = arrivalName;
 		this.arrivalTime = arrivalTime;
 		this.accuracy = accuracy;
+		this.status = status;
 	}
 
 	@Override
@@ -47,7 +49,7 @@ public class ShiplogVO {
 				+ insertTime + ", shipLat=" + shipLat + ", shipLon=" + shipLon + ", takeTime=" + takeTime
 				+ ", totalTakeTime=" + totalTakeTime + ", speed=" + speed + ", departure=" + departure + ", departTime="
 				+ departTime + ", arrivalName=" + arrivalName + ", arrivalTime=" + arrivalTime + ", accuracy="
-				+ accuracy + "]";
+				+ accuracy + ", status=" + status + "]";
 	}
 
 	public int getShipId() {
@@ -160,6 +162,14 @@ public class ShiplogVO {
 
 	public void setAccuracy(double accuracy) {
 		this.accuracy = accuracy;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 }

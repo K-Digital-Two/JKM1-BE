@@ -23,7 +23,7 @@ public class ShiplogDao {
 	public List<ShiplogVO> getLogs(Integer timeGroup) {
 		String sqlString = String.format(
 			// 필요한 정보 가져오기
-			"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime\r\n"
+			"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime, status\r\n"
 			// 가져올 테이블
 			+ "from ship, schedules s, shiplog sl, arrivalport a\r\n"
 			// 조건 설정
@@ -33,7 +33,6 @@ public class ShiplogDao {
 			+ "and shipId = s.ship_shipId\r\n"						// ship, schedule 테이블 연결
 			+ "and shipId = sl.ship_shipId\r\n"						// ship, shiplog 테이블 연결
 			+ "and s.arrivalPort_arrivalName = a.arrivalName\r\n"	// ship, arrivalport 테이블 연결
-			+ "and status = 0\r\n"									// 운항중인 정보만 가져오기(0:운항중 / 1:운항종료)
 			+ "group by shipId;",									// shipId(mmsi) 기준으로 그룹화
 			timeGroup);
 		List<ShiplogVO> list = jdbcTemplate.query(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
@@ -44,7 +43,7 @@ public class ShiplogDao {
 	public ShiplogVO getLog(Integer timeGroup, Integer shipId) {
 		String sqlString = String.format(
 			// 필요한 정보 가져오기
-			"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime\r\n"
+			"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime, status\r\n"
 			// 가져올 테이블
 			+ "from ship, schedules s, shiplog sl, arrivalport a\r\n"
 			// 조건 설정
@@ -54,7 +53,6 @@ public class ShiplogDao {
 			+ "and shipId = s.ship_shipId \r\n"						// ship, schedule 테이블 연결
 			+ "and shipId = sl.ship_shipId \r\n"					// ship, shiplog 테이블 연결
 			+ "and s.arrivalPort_arrivalName = a.arrivalName \r\n"	// ship, arrivalport 테이블 연결
-			+ "and status = 0\r\n"									// 운항중인 정보만 가져오기(0:운항중 / 1:운항종료)
 			+ "and shipId = %d;",									// 조회할 shipId(mmsi)
 			timeGroup, shipId);
 		ShiplogVO info = jdbcTemplate.queryForObject(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
