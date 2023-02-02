@@ -23,7 +23,7 @@ public class LoginDao {
 	}
 
 	public UserVO getUser(String id) {
-		String sqlString = String.format("select id, pw from user where id = %s", id);
+		String sqlString = String.format("select id, pw from user where id = '%s'", id);
 		UserVO user = jdbcTemplate.queryForObject(sqlString, new BeanPropertyRowMapper<UserVO>(UserVO.class));
 		return user;
 	}
@@ -48,7 +48,7 @@ public class LoginDao {
 	}
 
 	public int deleteUser(String id) {
-		String sqlString = String.format("delete from user where id = %s", id);
+		String sqlString = String.format("delete from user where id = '%s'", id);
 		int user = jdbcTemplate.update(sqlString);
 		return user;
 	}
