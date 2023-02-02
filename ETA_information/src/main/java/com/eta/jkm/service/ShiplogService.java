@@ -31,6 +31,10 @@ public class ShiplogService {
 		return dao.getLog(timeGroup, shipId);
 	}
 	
+	public List<ShiplogVO> getLocations(Integer timeGroup) {
+		return dao.getLocations(timeGroup);
+	}
+	
 	public List<ShiplogVO> getLocations(Integer timeGroup, Integer shipId) {
 		return dao.getLocations(timeGroup, shipId);
 	}

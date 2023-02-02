@@ -23,7 +23,7 @@ public class ShiplogDao {
 	public List<ShiplogVO> getLogs(Integer timeGroup) {
 		String sqlString = String.format(
 			// 필요한 정보 가져오기
-			"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, totalTakeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime\r\n"
+			"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime\r\n"
 			// 가져올 테이블
 			+ "from ship, schedules s, shiplog sl, arrivalport a\r\n"
 			// 조건 설정
@@ -44,7 +44,7 @@ public class ShiplogDao {
 	public ShiplogVO getLog(Integer timeGroup, Integer shipId) {
 		String sqlString = String.format(
 			// 필요한 정보 가져오기
-			"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, totalTakeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime\r\n"
+			"select shipId, shipName, shipUse, shipLat, shipLon, takeTime, speed, departure, departTime, arrivalPort_arrivalName as arrivalName, arrivalTime, accuracy, insertTime\r\n"
 			// 가져올 테이블
 			+ "from ship, schedules s, shiplog sl, arrivalport a\r\n"
 			// 조건 설정
@@ -61,7 +61,23 @@ public class ShiplogDao {
 		return info;
 	}
 	
-	// 운항 경로 표시를 위한 메소드
+	// 전체 선박의 운항 경로 표시를 위한 메소드
+	public List<ShiplogVO> getLocations(Integer timeGroup) {
+		String sqlString = String.format(
+			// 필요한 정보 가져오기
+			"select shipId, shipLat, shipLon, takeTime, insertTime \r\n"
+			// 가져올 테이블
+			+ "from ship, shiplog sl \r\n"
+			// 조건 설정
+			+ "where shipId = sl.ship_shipId \r\n"	// ship, shiplog 테이블 연결
+			+ "and timeGroup <= %d \r\n"						// 데이터 입력 시각
+			+ "group by shipId;",								// shipId(mmsi) 기준으로 그룹화
+			timeGroup);
+		List<ShiplogVO> list = jdbcTemplate.query(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
+		return list;
+	}
+	
+	// 특정 선박의 운항 경로 표시를 위한 메소드
 	public List<ShiplogVO> getLocations(Integer timeGroup, Integer shipId) {
 		String sqlString = String.format(
 			// 필요한 정보 가져오기
@@ -71,7 +87,6 @@ public class ShiplogDao {
 			// 조건 설정
 			+ "where shipId = sl.ship_shipId \r\n"	// ship, shiplog 테이블 연결
 			+ "and timeGroup <= %d \r\n"						// 데이터 입력 시각
-			+ "and status = 0\r\n"								// 운항여부
 			+ "and shipId = %d;",								// 조회할 shipId(mmsi)
 			timeGroup, shipId);
 		List<ShiplogVO> list = jdbcTemplate.query(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
