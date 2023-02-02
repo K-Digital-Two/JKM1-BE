@@ -22,7 +22,7 @@ public class LoginController {
 		return loginService.getUser(id);
 	}
 
-	@PostMapping("/signup") // Creat , 회원가입
+	@PostMapping("/signup") // Creatㄷ , 회원가입
 	public int addUser(UserVO userVO) {
 		return loginService.addUser(userVO);
 	}
