@@ -29,17 +29,14 @@ public class LoginDao {
 //			@Override
 //			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 //				String query = "insert into user (id, pw) value (?, ?)";
-		// 파라미터로 전달받은 Connection을 이용해서 PreparedStatement 생성
 //				PreparedStatement pstmt = con.prepareStatement(query);
-		// 인덱스 파라미터 값 설정
 //				pstmt.setString(1, userVO.getId());
 //				pstmt.setString(2, userVO.getPw());
-		// 생성한 PreparedStatement 객체 리턴
 //				return pstmt;
 //			}
 //		});
 
-		// 짧고 단순한 쿼리문 String.format(문자열 형식 지정) 사용
+		// 짧고 단순한 쿼리문 String.format 사용
 		String sql = String.format("insert into user (id, pw) value ('%s', '%s')", userVO.getId(), userVO.getPw());
 		return jdbcTemplate.update(sql);
 	}
