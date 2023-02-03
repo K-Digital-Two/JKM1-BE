@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.eta.jkm.dao.ShiplogDao;
+import com.eta.jkm.dao.ShiplogDAO;
 import com.eta.jkm.domain.ShiplogVO;
 
 // 서비스 제공
@@ -13,11 +13,11 @@ import com.eta.jkm.domain.ShiplogVO;
 public class ShiplogService {
 
 	// dao 객체 생성 - dao에서 구현된 메소드로 서비스 제공
-	private ShiplogDao dao;
+	private ShiplogDAO dao;
 
 	// 생성자를 통한 Autowired
 	@Autowired
-	public ShiplogService(ShiplogDao dao) {
+	public ShiplogService(ShiplogDAO dao) {
 		super();
 		this.dao = dao;
 	}
