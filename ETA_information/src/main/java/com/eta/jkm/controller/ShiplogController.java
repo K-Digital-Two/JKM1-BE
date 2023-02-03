@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.eta.jkm.domain.ObsVO;
 import com.eta.jkm.domain.ShiplogVO;
 import com.eta.jkm.service.ShiplogService;
 
@@ -50,5 +51,11 @@ public class ShiplogController {
 	public List<ShiplogVO> getLocations(@PathVariable Integer timeGroup, @PathVariable Integer shipId) {
 		log.info(String.format("ShiplogController - getLocations(%d)가 호출됨", shipId));
 		return shiplogService.getLocations(timeGroup, shipId);
+	}
+	
+	@GetMapping("/obs")
+	public List<ObsVO> getObs() {
+		log.info(String.format("ShiplogController - getObs()가 호출됨"));
+		return shiplogService.getObs();
 	}
 }

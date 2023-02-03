@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.eta.jkm.domain.ShiplogVO;
 
-@Repository
+@Repository("shiplogDao")
 public class ShiplogDAO {
 
 	private JdbcTemplate jdbcTemplate;
