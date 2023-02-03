@@ -10,12 +10,12 @@ import org.springframework.stereotype.Repository;
 import com.eta.jkm.domain.ShiplogVO;
 
 @Repository
-public class ShiplogDao {
+public class ShiplogDAO {
 
 	private JdbcTemplate jdbcTemplate;
 
 	@Autowired
-	public ShiplogDao(JdbcTemplate jdbcTemplate) {
+	public ShiplogDAO(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
@@ -63,7 +63,7 @@ public class ShiplogDao {
 	public List<ShiplogVO> getLocations(Integer timeGroup) {
 		String sqlString = String.format(
 			// 필요한 정보 가져오기
-			"select shipId, shipLat, shipLon, takeTime, insertTime \r\n"
+			"select shipId, shipName, shipLat, shipLon, takeTime, insertTime \r\n"
 			// 가져올 테이블
 			+ "from ship, shiplog sl \r\n"
 			// 조건 설정
@@ -78,7 +78,7 @@ public class ShiplogDao {
 	public List<ShiplogVO> getLocations(Integer timeGroup, Integer shipId) {
 		String sqlString = String.format(
 			// 필요한 정보 가져오기
-			"select shipId, shipLat, shipLon, takeTime, insertTime \r\n"
+			"select shipId, shipName, shipLat, shipLon, takeTime, insertTime \r\n"
 			// 가져올 테이블
 			+ "from ship, shiplog sl \r\n"
 			// 조건 설정
