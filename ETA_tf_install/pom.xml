@@ -40,6 +40,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		// 1. dependency injection
+		// 2. maven -> update project
+		// 3. Run As -> maven install
 		<dependency>
 			<groupId>org.tensorflow</groupId>
 			<artifactId>tensorflow-core-platform</artifactId>
