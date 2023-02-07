@@ -1,5 +1,7 @@
 package com.eta.jkm.domain;
 
+import java.sql.Time;
+
 public class ShiplogVO {
 
 	private int shipId;			// mmsi
@@ -8,8 +10,8 @@ public class ShiplogVO {
 	private String insertTime;	// 데이터 입력 시각
 	private double shipLat;		// 선박 현재 위도
 	private double shipLon;		// 선박 현재 경도
-	private int takeTime;		// 소요 예정 시간
-	private int totalTakeTime;	// 총 소요 예정 시간
+	private Time takeTime;		// 소요 예정 시간
+	private Time totalTakeTime;	// 총 소요 예정 시간
 	private double speed;		// 선박속도
 	private String departure;	// 출발지
 	private String departTime;	// 출발시각
@@ -23,7 +25,7 @@ public class ShiplogVO {
 	}
 
 	public ShiplogVO(int shipId, String shipName, String shipUse, String insertTime, double shipLat, double shipLon,
-			int takeTime, int totalTakeTime, double speed, String departure, String departTime, String arrivalName,
+			Time takeTime, Time totalTakeTime, double speed, String departure, String departTime, String arrivalName,
 			String arrivalTime, double accuracy, int status) {
 		super();
 		this.shipId = shipId;
@@ -100,19 +102,19 @@ public class ShiplogVO {
 		this.shipLon = shipLon;
 	}
 
-	public int getTakeTime() {
+	public Time getTakeTime() {
 		return takeTime;
 	}
 
-	public void setTakeTime(int takeTime) {
+	public void setTakeTime(Time takeTime) {
 		this.takeTime = takeTime;
 	}
 
-	public int getTotalTakeTime() {
+	public Time getTotalTakeTime() {
 		return totalTakeTime;
 	}
 
-	public void setTotalTakeTime(int totalTakeTime) {
+	public void setTotalTakeTime(Time totalTakeTime) {
 		this.totalTakeTime = totalTakeTime;
 	}
 
