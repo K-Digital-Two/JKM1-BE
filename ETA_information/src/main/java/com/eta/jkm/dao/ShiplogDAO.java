@@ -75,7 +75,7 @@ public class ShiplogDAO {
 	}
 	
 	// 특정 선박의 운항 경로 표시를 위한 메소드
-	public List<ShiplogVO> getLocations(Integer timeGroup, Integer shipId) {
+	public ShiplogVO getLocations(Integer timeGroup, Integer shipId) {
 		String sqlString = String.format(
 			// 필요한 정보 가져오기
 			"select shipId, shipName, shipLat, shipLon, takeTime, insertTime \r\n"
@@ -86,7 +86,7 @@ public class ShiplogDAO {
 			+ "and timeGroup = %d \r\n"				// 데이터 입력 시각
 			+ "and shipId = %d;",					// 조회할 shipId(mmsi)
 			timeGroup, shipId);
-		List<ShiplogVO> list = jdbcTemplate.query(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
-		return list;
+		ShiplogVO info = jdbcTemplate.queryForObject(sqlString, new BeanPropertyRowMapper<ShiplogVO>(ShiplogVO.class));
+		return info;
 	}
 }

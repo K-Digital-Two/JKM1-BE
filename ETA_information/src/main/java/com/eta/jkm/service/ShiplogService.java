@@ -41,7 +41,7 @@ public class ShiplogService {
 		return slDao.getLocations(timeGroup);
 	}
 	
-	public List<ShiplogVO> getLocations(Integer timeGroup, Integer shipId) {
+	public ShiplogVO getLocations(Integer timeGroup, Integer shipId) {
 		return slDao.getLocations(timeGroup, shipId);
 	}
 	

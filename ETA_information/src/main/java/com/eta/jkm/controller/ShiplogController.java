@@ -48,7 +48,7 @@ public class ShiplogController {
 	}
 	
 	@GetMapping("/locations/{timeGroup}/{shipId}")
-	public List<ShiplogVO> getLocations(@PathVariable Integer timeGroup, @PathVariable Integer shipId) {
+	public ShiplogVO getLocations(@PathVariable Integer timeGroup, @PathVariable Integer shipId) {
 		log.info(String.format("ShiplogController - getLocations(%d)가 호출됨", shipId));
 		return shiplogService.getLocations(timeGroup, shipId);
 	}
