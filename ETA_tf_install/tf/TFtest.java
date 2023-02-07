@@ -1,3 +1,5 @@
+// tensorflow 예시 출력 코드
+
 package com.eta.jkm.tf;
 
 import org.tensorflow.ConcreteFunction;
