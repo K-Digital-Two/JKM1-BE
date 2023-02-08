@@ -78,11 +78,12 @@ public class ShiplogDAO {
 	public ShiplogVO getLocations(Integer timeGroup, Integer shipId) {
 		String sqlString = String.format(
 			// 필요한 정보 가져오기
-			"select shipId, shipName, shipLat, shipLon, takeTime, insertTime \r\n"
+			"select shipId, shipName, shipLat, shipLon, takeTime, insertTime, shipUse, speed, departTime, arrivalTime, status \r\n"
 			// 가져올 테이블
-			+ "from ship, shiplog sl \r\n"
+			+ "from ship, schedules s, shiplog sl \r\n"
 			// 조건 설정
 			+ "where shipId = sl.ship_shipId \r\n"	// ship, shiplog 테이블 연결
+			+ "and shipId = s.ship_shipId \r\n"
 			+ "and timeGroup = %d \r\n"				// 데이터 입력 시각
 			+ "and shipId = %d;",					// 조회할 shipId(mmsi)
 			timeGroup, shipId);
