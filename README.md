@@ -28,16 +28,6 @@
 < scope >runtime< /scope >
 
 < /dependency >
-
-< dependency >
-
-< groupId > org.tensorflow < /groupId >
-
-< artifactId > tensorflow-core-platform < /artifactId >
-
-< version > 0.2.0 < /version >
-
-< /dependency >
 ## Building the project 📋
 ### You will need:
 + Java JDK 17 or higher
