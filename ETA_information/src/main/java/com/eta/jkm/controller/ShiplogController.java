@@ -31,25 +31,25 @@ public class ShiplogController {
 	// db에 저장된 정보를 보여주는 기능이므로 GetMapping만 사용
 	@GetMapping("/log/{timeGroup}")
 	public List<ShiplogVO> getLogs(@PathVariable Integer timeGroup) {
-		log.info("ShiplogController - getLogs()가 호출됨");
+		log.info(String.format("ShiplogController - getLogs(%d)가 호출됨", timeGroup));
 		return shiplogService.getLogs(timeGroup);
 	}
 	
 	@GetMapping("/log/{timeGroup}/{shipId}")
 	public ShiplogVO getLog(@PathVariable Integer timeGroup, @PathVariable Integer shipId) {
-		log.info(String.format("ShiplogController - getLog(%d)가 호출됨", shipId));
+		log.info(String.format("ShiplogController - getLog(%d/%d)가 호출됨", timeGroup, shipId));
 		return shiplogService.getLog(timeGroup, shipId);
 	}
 	
 	@GetMapping("/locations/{timeGroup}")
 	public List<ShiplogVO> getLocations(@PathVariable Integer timeGroup) {
-		log.info(String.format("ShiplogController - getLocations()가 호출됨"));
+		log.info(String.format("ShiplogController - getLocations(%d)가 호출됨", timeGroup));
 		return shiplogService.getLocations(timeGroup);
 	}
 	
 	@GetMapping("/locations/{timeGroup}/{shipId}")
-	public ShiplogVO getLocations(@PathVariable Integer timeGroup, @PathVariable Integer shipId) {
-		log.info(String.format("ShiplogController - getLocations(%d)가 호출됨", shipId));
+	public List<ShiplogVO> getLocations(@PathVariable Integer timeGroup, @PathVariable Integer shipId) {
+		log.info(String.format("ShiplogController - getLocations(%d/%d)가 호출됨", timeGroup, shipId));
 		return shiplogService.getLocations(timeGroup, shipId);
 	}
 	
