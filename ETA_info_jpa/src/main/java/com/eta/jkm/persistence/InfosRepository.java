@@ -1,5 +1,11 @@
 package com.eta.jkm.persistence;
 
-public interface InfosRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.eta.jkm.dto.ShiplogDTO;
+
+public interface InfosRepository extends JpaRepository<ShiplogDTO, Integer>{
+
+	
+	
 }
