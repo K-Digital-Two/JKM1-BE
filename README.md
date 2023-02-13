@@ -11,6 +11,9 @@
 + [최정인](https://github.com/Choi-09)
 + [이창현](https://github.com/ckdtns5262)
 
+## Final Version
+![image](https://user-images.githubusercontent.com/113369989/218220295-9f5e3469-520c-4dda-a110-e89d22433358.png)
+
 ## Requirements ✔️
 ### The fully fledged server uses the following:
 + SpringBoot 4.16.1.RELEASE
@@ -19,15 +22,12 @@
 
 ## Dependencies 📝
 ### There are a number of third-party dependencies used in the project. Browse the Maven pom.xml file for details of libraries and versions used.
-< dependency >
+\<dependency> <br>
+\<groupId>com.mysql\</groupId> <br>
+\<artifactId>mysql-connector-j\</artifactId > <br>
+\<scope>runtime\</scope> <br>
+\</dependency>
 
-< groupId >com.mysql< /groupId >
-
-< artifactId >mysql-connector-j< /artifactId >
-
-< scope >runtime< /scope >
-
-< /dependency >
 ## Building the project 📋
 ### You will need:
 + Java JDK 17 or higher
@@ -39,9 +39,6 @@
 + CORS
 + MySQL datasource apply
 + REST API config
-  + Ship List inquire
-  + Summary Information inquire
-  + Detail Information  inquire
 + Position Ship Location on map 
 
 ## etc 📌
