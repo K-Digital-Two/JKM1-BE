@@ -1,4 +1,4 @@
-package com.eta.jkm.domain;
+package com.eta.jkm.entity;
 
 public enum MethodType {
 	POST, GET, PUT, DELETE

@@ -1,4 +1,4 @@
-package com.eta.jkm.domain;
+package com.eta.jkm.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
