@@ -1,15 +1,14 @@
-# ReadMe: SpringBoot-rest service (JKM1-BE) 🍃
-빅데이터분석 웹서비스 개발 프로젝트
+## 💛 BIGDATA PJT BY JKM
 
-## Estimated Time of Arrival Project by 중.꺾.마 🔥
-+ https://github.com/orgs/K-Digital-Two
+### ShipTraffic Live - 선박도착시간 예측 서비스(Frontend repository)
 
-## Team Members 👩‍💻
-+ [이정민](https://github.com/danmiee)
-+ [금민경](https://github.com/min0312)
-+ [변혁](https://github.com/uiiunm)
-+ [최정인](https://github.com/Choi-09)
-+ [이창현](https://github.com/ckdtns5262)
+### 한 줄 소개
+
+- AIS 신호를 활용하여 국내 선박들의 위치 정보를 실시간으로 파악 및 목적지 도착 예정 시각을 예측하여 알려주는 서비스
+
+### 프로젝트
+-  2023.01.11 ~ 2023.02.09 (일/시간)
+- [Github - FrontEnd](https://github.com/K-Digital-Two/JKM1-FE)
 
 ## Final Version
 ![image](https://user-images.githubusercontent.com/113369989/218220295-9f5e3469-520c-4dda-a110-e89d22433358.png)
