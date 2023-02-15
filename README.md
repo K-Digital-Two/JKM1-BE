@@ -8,7 +8,7 @@
 
 ### 프로젝트
 -  2023.01.11 ~ 2023.02.09 (일/시간)
-- [Github - FrontEnd](https://github.com/K-Digital-Two/JKM1-FE)
+- [Github - BackEnd](https://github.com/K-Digital-Two/JKM1-BE)
 
 ## Final Version
 ![image](https://user-images.githubusercontent.com/113369989/218220295-9f5e3469-520c-4dda-a110-e89d22433358.png)
